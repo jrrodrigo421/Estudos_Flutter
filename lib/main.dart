@@ -19,12 +19,20 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.deepOrange,
           title: const Text('Lista de Tarefas'),
         ),
-        body: const Column(
-          children: [
+        body:  ListView(
+          scrollDirection: Axis.vertical,
+          children: const [
             Task(nome: 'Dominar Dart',),
             Task(nome: 'Dominar Flutter'),
             Task(nome: 'Dominar leitura de documentação',),
             Task(nome: 'Dominar UI/UX'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
+            Task(nome: 'Dominar TUDO! >> #FÉ'),
             Task(nome: 'Dominar TUDO! >> #FÉ'),
 
           ],
@@ -47,32 +55,39 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueGrey,
-      child: Stack(
-        children: [
-          Container(
-            color: Colors.deepOrangeAccent,
-            height: 140,
-          ),
-          Container(
-            color: const Color.fromARGB(255, 192, 200, 199),
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  color: Colors.blueGrey,
-                  width: 72,
-                  height: 100,
-                ),
-                Text(nome),
-                ElevatedButton(
-                    onPressed: () {}, child: Icon(Icons.arrow_drop_up))
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.blueGrey,
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.deepOrangeAccent,
+              height: 140,
             ),
-          )
-        ],
+            Container(
+              color: const Color.fromARGB(255, 192, 200, 199),
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    color: Colors.blueGrey,
+                    width: 72,
+                    height: 100,
+                  ),
+                  Container(
+                    width: 200,
+                    child: Text(nome, style: TextStyle(fontSize: 24), overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  ElevatedButton(
+                      onPressed: () {}, child: Icon(Icons.arrow_drop_up))
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
