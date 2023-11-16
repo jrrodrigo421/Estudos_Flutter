@@ -19,12 +19,16 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.deepOrange,
           title: const Text('Lista de Tarefas'),
         ),
-        body:  ListView(
+        body: ListView(
           scrollDirection: Axis.vertical,
           children: const [
-            Task(nome: 'Dominar Dart',),
+            Task(
+              nome: 'Dominar Dart',
+            ),
             Task(nome: 'Dominar Flutter'),
-            Task(nome: 'Dominar leitura de documentação',),
+            Task(
+              nome: 'Dominar leitura de documentação',
+            ),
             Task(nome: 'Dominar UI/UX'),
             Task(nome: 'Dominar TUDO! >> #FÉ'),
             Task(nome: 'Dominar TUDO! >> #FÉ'),
@@ -34,7 +38,6 @@ class MyApp extends StatelessWidget {
             Task(nome: 'Dominar TUDO! >> #FÉ'),
             Task(nome: 'Dominar TUDO! >> #FÉ'),
             Task(nome: 'Dominar TUDO! >> #FÉ'),
-
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -58,12 +61,10 @@ class Task extends StatefulWidget {
 }
 
 class _TaskState extends State<Task> {
-
   int nivel = 0;
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -83,26 +84,53 @@ class _TaskState extends State<Task> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.blueGrey,
+                        color: Colors.indigo,
                         width: 72,
                         height: 100,
                       ),
                       Container(
+                        // color: Colors.orange,
                         width: 200,
-                        child: Text(widget.nome, style: TextStyle(fontSize: 24), overflow: TextOverflow.ellipsis,
+                        child: Text(
+                          widget.nome,
+                          style: TextStyle(fontSize: 24),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                            print('$nivel');
-                          }, child: Icon(Icons.arrow_drop_up))
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            nivel++;
+                          });
+                          print('$nivel');
+                        },
+                        child: Icon(
+                          Icons.arrow_drop_up, color: Colors.white38,
+                        ),
+                      )
                     ],
                   ),
                 ),
-                Text('Nivel: $nivel', style: TextStyle(fontSize: 24),)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: LinearProgressIndicator(
+                        color: Colors.indigo,
+                        backgroundColor: Colors.black54,
+                        value: nivel / 10,
+                      ),
+                      width: 200,
+                    ),
+                    Text(
+                      'Nivel: $nivel',
+                      style: TextStyle(fontSize: 24),
+                    ),
+                  ],
+                ),
               ],
             )
           ],
